@@ -43,6 +43,13 @@ spec:
       severity: Low
       summary: "Platform protections removed by non-Red Hat user"
       logType: Cluster Security
+    - activeBody: |-
+        A non-SRE user on your cluster has accessed an etcd pod directly (e.g. via exec or rsh). Direct access to etcd pods is reserved for Red Hat SRE and should not be performed by cluster administrators or other users, as it can risk the stability and supportability of your cluster's control plane. No action is required from Red Hat at this time; this notification is a reminder to review access to this namespace. Please ensure only authorized personnel have access to the openshift-etcd namespace going forward.
+      name: NonSREAccessEtcdPods # https://redhat.atlassian.net/browse/MCS-1504
+      resendWait: 1
+      severity: Low
+      summary: "Non-SRE access to etcd pods detected"
+      logType: Cluster Security
     - activeBody: Your cluster requires you to take action. The kernel file descriptor
         limit for a worker node is currently at or above 90% and is predicted to be
         fully exhausted soon. This will prevent applications on the node from opening
